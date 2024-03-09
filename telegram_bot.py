@@ -12,3 +12,5 @@ bot = telegram.Bot(token=token)
 print(bot.get_me())
 
 bot.send_message(text='Hi John!', chat_id='@teeestbot_channel')
+
+bot.send_document(chat_id='@teeestbot_channel', document=open('images/nasa_0.jpg', 'rb'))
