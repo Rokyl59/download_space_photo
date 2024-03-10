@@ -3,6 +3,7 @@ from dotenv import load_dotenv
 import requests
 from common_functions import fetch_image, get_file_extension
 
+
 def get_apod_images(api_key, count=30):
     apod_url = 'https://api.nasa.gov/planetary/apod'
     params = {'api_key': api_key, 'count': count}
@@ -14,6 +15,7 @@ def get_apod_images(api_key, count=30):
         ext = get_file_extension(image_url)
         filename = f'nasa_{index}{ext}'
         fetch_image(image_url, 'images', filename)
+
 
 if __name__ == '__main__':
     load_dotenv()
