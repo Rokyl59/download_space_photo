@@ -12,8 +12,7 @@ def get_file_extension(url):
 
 
 def fetch_image(url, path, filename):
-    if not os.path.exists(path):
-        os.makedirs(path)
+    os.makedirs(path, exist_ok=True)
     response = requests.get(url)
     response.raise_for_status()
     content = response.content
