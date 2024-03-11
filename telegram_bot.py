@@ -16,7 +16,8 @@ def publish_photos(bot, chat_id, directory, interval_hours):
     while True:
         for photo in photos:
             photo_path = os.path.join(directory, photo)
-            bot.send_document(chat_id=chat_id, document=open(photo_path, 'rb'))
+            with open(photo_path, 'rb') as file:
+                bot.send_document(chat_id=chat_id, document=file)
             time.sleep(interval_hours * SECOND_IN_HOUR)
         random.shuffle(photos)
 
