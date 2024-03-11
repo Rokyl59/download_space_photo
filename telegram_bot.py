@@ -6,6 +6,9 @@ from dotenv import load_dotenv
 import telegram
 
 
+SECOND_IN_HOUR = 3600
+
+
 def publish_photos(bot, chat_id, directory, interval_hours):
     photos = [f for f in os.listdir(directory) if os.path.isfile(os.path.join(directory, f))]
     random.shuffle(photos)
@@ -14,7 +17,7 @@ def publish_photos(bot, chat_id, directory, interval_hours):
         for photo in photos:
             photo_path = os.path.join(directory, photo)
             bot.send_document(chat_id=chat_id, document=open(photo_path, 'rb'))
-            time.sleep(interval_hours * 3600)
+            time.sleep(interval_hours * SECOND_IN_HOUR)
         random.shuffle(photos)
 
 
