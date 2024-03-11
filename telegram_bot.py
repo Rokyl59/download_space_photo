@@ -21,7 +21,7 @@ def publish_photos(bot, chat_id, directory, interval_hours):
 if __name__ == "__main__":
     load_dotenv()
     token = os.getenv('TELEGRAM_TOKEN_API')
-    chat_id = os.getenv('CHAT_ID')
+    chat_id = os.getenv('TG_CHAT_ID')
     bot = telegram.Bot(token=token)
     
     parser = argparse.ArgumentParser(description='Publish photos to Telegram channel.')
