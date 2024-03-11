@@ -11,9 +11,9 @@ def get_file_extension(url):
     return ext
 
 
-def fetch_image(url, path, filename):
+def fetch_image(url, path, filename, params=None):
     os.makedirs(path, exist_ok=True)
-    response = requests.get(url)
+    response = requests.get(url, params=params)
     response.raise_for_status()
     content = response.content
     with open(f'{path}/{filename}', 'wb') as file:

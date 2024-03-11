@@ -1,7 +1,7 @@
 import os
 from dotenv import load_dotenv
 import requests
-from common_functions import get_file_extension
+from common_functions import get_file_extension, fetch_image
 
 
 def fetch_recent_epic_image_metadata(api_key, count=10):
@@ -21,10 +21,7 @@ def download_and_save_epic_images(api_key, epic_images_metadata):
     ext = get_file_extension(url_template)
     filename = f'epic_{index}{ext}'
 
-    response = requests.get(url_template, params={'api_key': api_key})
-    os.makedirs('images', exist_ok=True)
-    with open(os.path.join('images', filename), 'wb') as f:
-        f.write(response.content)
+    fetch_image(url_template, 'images', filename, params={'api_key': api_key})
 
 
 if __name__ == '__main__':
